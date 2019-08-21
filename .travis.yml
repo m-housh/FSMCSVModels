@@ -7,6 +7,6 @@ environment:
     CODECOV_TOKEN="260337da-f258-49ba-a980-7b940f471837"
 script:
     - swift package generate-xcodeproj
-    - set -o pipefail && xcodebuild -scheme JWTTokenService-Package -enableCodeCoverage YES clean build test | xcpretty
+    - set -o pipefail && xcodebuild -scheme FSMCSVModels-Package -enableCodeCoverage YES clean build test | xcpretty
 after_success:
   - bash <(curl -s https://codecov.io/bash)
