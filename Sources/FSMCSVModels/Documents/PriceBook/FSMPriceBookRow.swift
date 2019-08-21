@@ -24,7 +24,7 @@ public struct FSMPriceBookRow: Codable, CSVRow {
     public let make: String
     public let model: String
     public let upc: String
-    public let quantityUnits: String
+    public let quantityUnits: FSMQuantityUnit
     public let laborDuration: Double
     public let acquisitionCost: Int
     public let purchaseCost: Int
@@ -35,7 +35,7 @@ public struct FSMPriceBookRow: Codable, CSVRow {
     public let requireWorkAuthorizationSignature: Bool
     public let categories: [String]
     
-    public init(code: String, reserved: String = "", type: FSMPriceBookType = .service, name: String, description: String, make: String = "", model: String = "", upc: String = "", quantityUnits: String = "Unit", laborDuration: Double, acquisitionCost: Int = 0, purchaseCost: Int = 0, active: Bool = true, addToEstimateOnCreate: Bool = false, addToWorkOrderOnCreate: Bool = false, addToInvoiceOnCreate: Bool = false, requireWorkAuthorizationSignature: Bool = false, categories: [String] = []) {
+    public init(code: String, reserved: String = "", type: FSMPriceBookType = .service, name: String, description: String, make: String = "", model: String = "", upc: String = "", quantityUnits: FSMQuantityUnit = .unit, laborDuration: Double, acquisitionCost: Int = 0, purchaseCost: Int = 0, active: Bool = true, addToEstimateOnCreate: Bool = false, addToWorkOrderOnCreate: Bool = false, addToInvoiceOnCreate: Bool = false, requireWorkAuthorizationSignature: Bool = false, categories: [String] = []) {
         
         self.code = code
         self.reserved = reserved
@@ -60,7 +60,7 @@ public struct FSMPriceBookRow: Codable, CSVRow {
     public var values: [String] {
         let categoriesString = categories.joined(separator: ";")
         
-        return [code, reserved, type.description, name, description, make, model, upc, "\(quantityUnits)", "\(laborDuration)", "\(acquisitionCost)", "\(purchaseCost)", "\(active.int)", "\(addToEstimateOnCreate.int)", "\(addToWorkOrderOnCreate.int)", "\(addToInvoiceOnCreate.int)", "\(requireWorkAuthorizationSignature.int)", categoriesString]
+        return [code, reserved, type.description, name, description, make, model, upc, "\(quantityUnits.description)", "\(laborDuration)", "\(acquisitionCost)", "\(purchaseCost)", "\(active.int)", "\(addToEstimateOnCreate.int)", "\(addToWorkOrderOnCreate.int)", "\(addToInvoiceOnCreate.int)", "\(requireWorkAuthorizationSignature.int)", categoriesString]
     }
 }
 
