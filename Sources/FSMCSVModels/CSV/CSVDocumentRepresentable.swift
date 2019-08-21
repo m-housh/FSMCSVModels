@@ -1,18 +1,24 @@
 //
-//  File.swift
+//  CSVDocumentRepresentable.swift
 //  
 //
 //  Created by Michael Housh on 8/20/19.
 //
 
-import Foundation
 
+/**
+# CSVDocumentRepresentable
 
-public protocol CSVDocumentRepresentable {
+A representation of a CSV document.
+
+*/
+public protocol CSVDocumentRepresentable: StringRepresentable {
+   
+    /// The header row of the document.
     var header: CSVHeader { get }
-    var rows: [CSVRow] { get }
     
-    var string: String { get }
+    /// The non-header rows of the document.
+    var rows: [CSVRow] { get }
 }
 
 extension CSVDocumentRepresentable {
@@ -21,7 +27,10 @@ extension CSVDocumentRepresentable {
         return rows.map { $0.string }.joined(separator: "\n")
     }
     
+    /// The string representation of the document
+    /// - seealso: `StringRepresentable`
     public var string: String {
         return "\(header.string)\n\(rowString)"
     }
+    
 }

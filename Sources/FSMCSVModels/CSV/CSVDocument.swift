@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  CSVDocument.swift
 //  
 //
 //  Created by Michael Housh on 8/20/19.
@@ -8,9 +8,18 @@
 import Foundation
 
 
+/**
+ # CSVDocument
+ 
+ A representation of a CSV document.
+ 
+ */
 public struct CSVDocument: CSVDocumentRepresentable {
     
+    /// The header row of the document.
     public let header: CSVHeader
+    
+    /// The non-header rows of the document.
     public let rows: [CSVRow]
     
     public init(header: CSVHeader, rows: [CSVRow]) throws {
@@ -26,6 +35,7 @@ public struct CSVDocument: CSVDocumentRepresentable {
 
 extension CSVDocument {
     
+    /// Create a `CSVDocument` that represents the `FSMPriceBook`.
     public static func priceBook(rows: [FSMPriceBookRow]) throws -> CSVDocument {
         return try CSVDocument(header: FSMPriceBookHeader(), rows: rows)
     }

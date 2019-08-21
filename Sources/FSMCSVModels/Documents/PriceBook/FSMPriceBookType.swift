@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  FSMPriceBookType.swift
 //  
 //
 //  Created by Michael Housh on 8/20/19.
@@ -21,10 +21,5 @@ public enum FSMPriceBookType: String, CustomStringConvertible, Codable {
     
     public var description: String {
         return rawValue.capitalized
-    }
-    
-    public func encode(to encoder: Encoder) throws {
-        var container = encoder.singleValueContainer()
-        try container.encode(description)
     }
 }
