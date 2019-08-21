@@ -1,3 +1,3 @@
 # FSMCSVModels
 
-A description of this package.
+Utility package that represents CSV data models for Fieldstone Management Software.
